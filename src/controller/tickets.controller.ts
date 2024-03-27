@@ -47,6 +47,20 @@ class TicketsController {
     }
   }
 
+  static async updateTicket(req: express.Request, res: express.Response) {
+    try {
+      const ticket = await Ticket.findByPk(req.params.ticketId);
+      if (!ticket) {
+        res.status(404).send('Ticket not found.');
+      }
+      ticket.update(req.body);
+      res.json(ticket);
+    } catch (error) {
+      console.log(error)
+      res.status(400).send('Error updating ticket.');
+    }
+  }
+
   static async createTicket(req: express.Request, res: express.Response) {
     try {
       const ticket = await Ticket.create({...req.body, slug: generateSlug(req.body.title)});
