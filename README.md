@@ -1,5 +1,8 @@
 # support-tickets-zealthy
 
+## Installation
+- change `.env.sample` to `.env`
+
 ## Run via Docker
 run `docker-compose up --build`
 
