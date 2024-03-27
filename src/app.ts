@@ -27,7 +27,7 @@ sequelize.authenticate().then(() => {
   console.log('Database connection has been established successfully.');
   sequelize.modelManager.addModel(require('./models/ticket.model').default);
   sequelize.modelManager.addModel(require('./models/replyThread.model').default);
-  sequelize.sync();
+  sequelize.sync({alter: true});
 });
 
 

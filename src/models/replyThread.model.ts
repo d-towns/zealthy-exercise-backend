@@ -43,7 +43,7 @@ const ReplyThread = sequelize.define('reply_threads', {
 });
 
 // Self-referential association to support a hierarchy of replies
-ReplyThread.hasMany(ReplyThread, { as: 'Replies', foreignKey: 'replyParentId' });
-ReplyThread.belongsTo(ReplyThread, { as: 'Parent', foreignKey: 'replyParentId' });
+ReplyThread.hasMany(ReplyThread, { as: 'replies', foreignKey: 'replyParentId' });
+ReplyThread.belongsTo(ReplyThread, { as: 'parent', foreignKey: 'replyParentId' });
 
 export default ReplyThread;

@@ -48,6 +48,6 @@ const Ticket = sequelize.define('tickets', {
     },
 });
 
-Ticket.hasMany(ReplyThread, { as: 'Replies', foreignKey: 'ticketId' });
+Ticket.hasMany(ReplyThread, { as: 'replies', foreignKey: 'ticketId' });
 
 export default Ticket;

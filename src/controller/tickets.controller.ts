@@ -37,7 +37,7 @@ class TicketsController {
         include:
           {
             model: ReplyThread,
-            as: 'Replies'
+            as: 'replies'
           }
       }
     ); 
