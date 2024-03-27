@@ -11,6 +11,7 @@ export class TicketsRoutes extends CommonRoutesConfig {
     this.app.route("/tickets").get(TicketsController.listTickets);
     this.app.route("/tickets/:ticketSlug").get(TicketsController.getTicketBySlug);
     this.app.route("/tickets/create").post(TicketsController.createTicket);
+    this.app.route("/tickets/:ticketId").put(TicketsController.updateTicket);
     this.app.route("/tickets/:ticketId/reply").post(TicketsController.replyToTicket);
 
     return this.app;
