@@ -16,7 +16,7 @@ const routes: Array<CommonRoutesConfig> = [];
 app.use(cors(
   {
     origin: process.env.CORS_ORIGIN,
-    credentials: true
+    credentials: true,
   }
 ));
 
@@ -36,6 +36,7 @@ routes.push(new TicketsRoutes(app));
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}.`);
+  console.log(`Cors origin: ${process.env.CORS_ORIGIN}`);
 });
 
 
