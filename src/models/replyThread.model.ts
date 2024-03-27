@@ -6,7 +6,7 @@ const ReplyThread = sequelize.define('reply_threads', {
     id: {
         type: DataTypes.STRING,
         primaryKey: true,
-        defaultValue: uuidv4(),
+        defaultValue: () =>  uuidv4(),
     },
     ticketId: {
         type: DataTypes.STRING,

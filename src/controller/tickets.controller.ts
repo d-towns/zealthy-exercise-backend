@@ -2,6 +2,7 @@ import express from 'express'
 import Ticket, {generateSlug} from '../models/ticket.model';
 import ReplyThread from '../models/replyThread.model';
 import { log } from 'console';
+import { Model } from 'sequelize';
 
 // import { query, validationResult } from 'express-validator';
 
@@ -49,11 +50,13 @@ class TicketsController {
 
   static async updateTicket(req: express.Request, res: express.Response) {
     try {
-      const ticket = await Ticket.findByPk(req.params.ticketId);
+      const ticket = await Ticket.findByPk(req.params.ticketId)
       if (!ticket) {
         res.status(404).send('Ticket not found.');
       }
       ticket.update(req.body);
+      
+      console.log(`Sending ticket status update email notification to ${ticket.dataValues.email} for ticket ${ticket.dataValues.id}`)
       res.json(ticket);
     } catch (error) {
       console.log(error)
@@ -77,10 +80,8 @@ class TicketsController {
       if (!ticket) {
         res.status(404).send('Ticket not found.');
       }
-      if(req.body.newStatus) {
-        ticket.update({status: req.body.newStatus});
-      }
       const reply = await ReplyThread.create(req.body);
+      console.log(`Sending new reply email notification to ${ticket.dataValues.email} for ticket ${ticket.dataValues.id}`)
       res.json(reply);
         
     } catch (error) {

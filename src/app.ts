@@ -36,7 +36,6 @@ routes.push(new TicketsRoutes(app));
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}.`);
-  console.log(`Cors origin: ${process.env.CORS_ORIGIN}`);
 });
 
 
